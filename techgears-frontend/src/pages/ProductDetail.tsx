@@ -6,14 +6,26 @@ import ProductCard from '@/components/ui/ProductCard'
 import { Product } from '@/types'
 
 const relatedProducts: Product[] = [
-  { id: '1', name: 'Wireless Gaming Headset 7.1', price: 149, originalPrice: 199, image: 'https://images.unsplash.com/photo-1599669454699-248893623440?w=300&h=300&fit=crop', category: 'Gaming', stock: 10, rating: 5, reviews: 88, slug: 'wireless-gaming-headset' },
-  { id: '2', name: 'Mechanical Gaming Keyboard', price: 89, originalPrice: 129, image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=300&h=300&fit=crop', category: 'Accessories', stock: 15, rating: 4.5, reviews: 156, slug: 'mechanical-gaming-keyboard' },
-  { id: '3', name: 'Wireless Gaming Mouse RGB', price: 59, originalPrice: 79, image: 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=300&h=300&fit=crop', category: 'Accessories', stock: 20, rating: 5, reviews: 243, slug: 'wireless-gaming-mouse' },
-  { id: '4', name: 'USB-C Hub 7-in-1', price: 39, originalPrice: 59, image: 'https://images.unsplash.com/photo-1625948515291-69613efd103f?w=300&h=300&fit=crop', category: 'Accessories', stock: 35, rating: 4.5, reviews: 178, slug: 'usb-c-hub-7in1' },
+  {
+    id: '1', name: 'Wireless Gaming Headset 7.1', price: 149, originalPrice: 199, image: 'https://images.unsplash.com/photo-1599669454699-248893623440?w=300&h=300&fit=crop', category: 'Gaming', stock: 10, rating: 5, reviews: 88, slug: 'wireless-gaming-headset',
+    description: ''
+  },
+  {
+    id: '2', name: 'Mechanical Gaming Keyboard', price: 89, originalPrice: 129, image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=300&h=300&fit=crop', category: 'Accessories', stock: 15, rating: 4.5, reviews: 156, slug: 'mechanical-gaming-keyboard',
+    description: ''
+  },
+  {
+    id: '3', name: 'Wireless Gaming Mouse RGB', price: 59, originalPrice: 79, image: 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=300&h=300&fit=crop', category: 'Accessories', stock: 20, rating: 5, reviews: 243, slug: 'wireless-gaming-mouse',
+    description: ''
+  },
+  {
+    id: '4', name: 'USB-C Hub 7-in-1', price: 39, originalPrice: 59, image: 'https://images.unsplash.com/photo-1625948515291-69613efd103f?w=300&h=300&fit=crop', category: 'Accessories', stock: 35, rating: 4.5, reviews: 178, slug: 'usb-c-hub-7in1',
+    description: ''
+  },
 ]
 
 export default function ProductDetail() {
-  const { slug } = useParams()
+  useParams()
   const [quantity, setQuantity] = useState(2)
   const [selectedSize, setSelectedSize] = useState('M')
   const [selectedColor, setSelectedColor] = useState('red')

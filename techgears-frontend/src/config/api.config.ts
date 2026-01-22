@@ -1,5 +1,5 @@
 export const API_CONFIG = {
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:8000/api',
+  baseURL: import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api',
   timeout: 30000, // Increased timeout for order processing
   headers: {
     'Content-Type': 'application/json',
@@ -10,7 +10,7 @@ export const API_CONFIG = {
 export const APP_CONFIG = {
   name: 'TechGears',
   description: 'Premium Electronics & Technology Store',
-  url: import.meta.env.VITE_APP_URL || 'http://localhost:5173',
+  url: import.meta.env.VITE_APP_URL || 'http://127.0.0.1:5173',
   enableDarkMode: import.meta.env.VITE_ENABLE_DARK_MODE !== 'false',
 }
 

@@ -11,8 +11,10 @@ export default function Register() {
     name: '',
     email: '',
     password: '',
+    password_confirmation: '',
   })
   const [showPassword, setShowPassword] = useState(false)
+  const [showPasswordConfirmation, setShowPasswordConfirmation] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
@@ -108,6 +110,25 @@ export default function Register() {
                   className="absolute right-0 bottom-2 text-gray-500 hover:text-gray-700 transition"
                 >
                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+              </div>
+
+              <div className="relative">
+                <input
+                  type={showPasswordConfirmation ? "text" : "password"}
+                  name="password_confirmation" // Nama harus sesuai dengan aturan Laravel
+                  placeholder="Confirm Password"
+                  value={formData.password_confirmation}
+                  onChange={handleChange}
+                  required
+                  className="w-full pb-2 border-b border-gray-300 focus:outline-none focus:border-black transition"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPasswordConfirmation(!showPasswordConfirmation)}
+                  className="absolute right-0 bottom-2 text-gray-500 hover:text-gray-700 transition"
+                >
+                  {showPasswordConfirmation ? <EyeOff size={20} /> : <Eye size={20} />}
                 </button>
               </div>
 
