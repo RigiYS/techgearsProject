@@ -24,20 +24,17 @@ import LoyaltyProgram from './pages/LoyaltyProgram'
 import FAQ from './pages/FAQ'
 import Terms from './pages/Terms'
 import PrivacyPolicy from './pages/PrivacyPolicy'
+import ProtectedRoute from './components/auth/ProtectedRoute';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="products" element={<SellerProductManagement />} />
           <Route index element={<Home />} />
           <Route path="products" element={<Products />} />
           <Route path="products/:slug" element={<ProductDetail />} />
           <Route path="cart" element={<Cart />} />
-          <Route path="checkout" element={<Checkout />} />
-          <Route path="account" element={<Account />} />
-          <Route path="wishlist" element={<Wishlist />} />
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
           <Route path="comparison" element={<ProductComparison />} />
@@ -49,10 +46,17 @@ function App() {
           <Route path="faq" element={<FAQ />} />
           <Route path="terms" element={<Terms />} />
           <Route path="privacy-policy" element={<PrivacyPolicy />} />
-          
-          <Route path="seller/products" element={<SellerProductManagement />} />
-          <Route path="seller/products/add" element={<SellerAddProduct />} />
-          <Route path="seller/orders" element={<SellerOrderManagement />} />
+
+          <Route element={<ProtectedRoute />}>
+            <Route path="account" element={<Account />} />
+            <Route path="checkout" element={<Checkout />} />
+            <Route path="wishlist" element={<Wishlist />} />
+            
+            {/* Rute Khusus Seller */}
+            <Route path="seller/products" element={<SellerProductManagement />} />
+            <Route path="seller/products/add" element={<SellerAddProduct />} />
+            <Route path="seller/orders" element={<SellerOrderManagement />} />
+          </Route>
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
