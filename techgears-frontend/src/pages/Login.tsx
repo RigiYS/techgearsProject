@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/store/authStore'
 import { AuthAPI } from '@/services/api.service'
-import { Eye, EyeOff } from 'lucide-react'
+import { Eye, EyeOff, ArrowRight } from 'lucide-react'
 
 export default function Login() {
   const navigate = useNavigate()
@@ -19,99 +19,121 @@ export default function Login() {
     setError('')
 
     try {
-      // Direct login without CSRF (using token-based auth)
       const response = await AuthAPI.login({ email, password })
-
-      // Backend returns: { success: true, data: { user, token } }
       const { user, token } = response.data.data
       login(user, token)
       localStorage.setItem('token', token)
       navigate('/')
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Invalid username or password.')
+      setError(err.response?.data?.message || 'Email atau password yang Anda masukkan salah.')
     } finally {
       setLoading(false)
     }
   }
 
   return (
-    <div className="min-h-screen flex items-center py-16">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="relative hidden lg:block">
+    // Penyesuaian min-h agar navbar tetap terlihat dan tidak overflow berlebih
+    <div className="min-h-[calc(100vh-80px)] flex items-center bg-white">
+      <div className="container mx-auto px-6 py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          
+          {/* Sisi Kiri: Visual/Banner */}
+          <div className="relative hidden lg:block h-[600px]">
+            <div className="absolute inset-0 bg-blue-600/10 rounded-3xl z-10" />
             <img
-              src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=800&h=600&fit=crop"
-              alt="Shopping"
-              className="w-full rounded-lg object-cover"
+              src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=800&h=1000&fit=crop"
+              alt="Shopping Experience"
+              className="w-full h-full rounded-3xl object-cover shadow-2xl"
             />
+            <div className="absolute bottom-10 left-10 z-20 text-white drop-shadow-lg">
+              <h2 className="text-3xl font-bold mb-2">Upgrade Your Gear</h2>
+              <p className="text-lg opacity-90">Temukan teknologi terbaru untuk menunjang produktivitas Anda.</p>
+            </div>
           </div>
 
-          <div className="max-w-md mx-auto w-full">
-            <h1 className="text-4xl font-medium mb-3">Log in to TechGears</h1>
-            <p className="text-gray-600 mb-8">Enter your details below</p>
+          {/* Sisi Kanan: Form Login */}
+          <div className="w-full max-w-md mx-auto">
+            <div className="mb-10 text-center lg:text-left">
+              <h1 className="text-4xl font-bold text-gray-900 mb-3">Selamat Datang</h1>
+              <p className="text-gray-500">Silakan masuk ke akun TechGears Anda</p>
+            </div>
 
             {error && (
-              <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-600 rounded">
+              <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700 text-sm rounded-r shadow-sm animate-in fade-in slide-in-from-top-1">
                 {error}
               </div>
             )}
 
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
+              <div className="space-y-1">
+                <label className="text-sm font-semibold text-gray-700 ml-1">Email</label>
                 <input
                   type="email"
-                  placeholder="Email"
+                  placeholder="name@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full pb-2 border-b border-gray-300 focus:outline-none focus:border-black transition"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all"
                 />
               </div>
 
-              <div className="relative">
-                <input
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  className="w-full pb-2 pr-10 border-b border-gray-300 focus:outline-none focus:border-black transition [&::-ms-reveal]:hidden [&::-ms-clear]:hidden"
-                  style={{ WebkitTextSecurity: showPassword ? 'none' : 'disc' } as any}
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-0 bottom-2 text-gray-500 hover:text-gray-700 transition"
-                >
-                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-                </button>
-              </div>
-
-              <div className="space-y-4">
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full bg-blue-500 text-white px-12 py-4 rounded-lg hover:bg-blue-600 transition disabled:opacity-50 font-medium shadow-md hover:shadow-lg"
-                >
-                  {loading ? 'Logging in...' : 'Log In'}
-                </button>
-
-                <div className="flex items-center justify-between text-sm">
-                  <Link to="/register" className="text-gray-600">
-                    Don't have an account? <span className="font-medium text-blue-500">Create Account</span>
-                  </Link>
-                  <Link to="/forgot-password" className="text-blue-500 hover:underline">
-                    Forget Password?
-                  </Link>
+              <div className="space-y-1">
+                <label className="text-sm font-semibold text-gray-700 ml-1">Password</label>
+                <div className="relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Masukkan password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                  >
+                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                  </button>
                 </div>
               </div>
-            </form>
 
-            <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded">
-              <p className="text-sm text-gray-700 font-medium mb-2">Test Account:</p>
-              <p className="text-xs text-gray-600">Email: <strong>admin@techgears.com</strong></p>
-              <p className="text-xs text-gray-600">Password: <strong>password</strong></p>
-            </div>
+              <div className="flex items-center justify-end">
+                <Link to="/forgot-password" className="text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">
+                  Lupa password?
+                </Link>
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="group w-full bg-gray-900 text-white py-4 rounded-xl hover:bg-black transition-all disabled:opacity-50 font-semibold shadow-lg flex items-center justify-center gap-2"
+              >
+                {loading ? (
+                  <span className="flex items-center gap-2">
+                    <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Memproses...
+                  </span>
+                ) : (
+                  <>
+                    Masuk Sekarang
+                    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                  </>
+                )}
+              </button>
+
+              <div className="pt-6 border-t border-gray-100 text-center">
+                <p className="text-gray-600 text-sm">
+                  Belum punya akun?{' '}
+                  <Link to="/register" className="font-bold text-blue-600 hover:underline">
+                    Daftar Gratis
+                  </Link>
+                </p>
+              </div>
+            </form>
           </div>
         </div>
       </div>

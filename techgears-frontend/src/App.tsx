@@ -47,6 +47,9 @@ function App() {
           <Route path="terms" element={<Terms />} />
           <Route path="privacy-policy" element={<PrivacyPolicy />} />
 
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+
           <Route element={<ProtectedRoute />}>
             <Route path="account" element={<Account />} />
             <Route path="checkout" element={<Checkout />} />
@@ -58,8 +61,7 @@ function App() {
             <Route path="seller/orders" element={<SellerOrderManagement />} />
           </Route>
         </Route>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

@@ -218,4 +218,3 @@ export default function ProductCard({ product, badge, badgeColor = 'danger', loa
     </>
   )
 }
-

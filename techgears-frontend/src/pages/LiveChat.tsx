@@ -23,7 +23,7 @@ export default function LiveChat() {
         <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
           <div className="h-[500px] p-6 space-y-6 overflow-y-auto">
             <div className="flex gap-4">
-              <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center shrink-0">
                 <Headphones className="w-5 h-5 text-white" />
               </div>
               <div className="max-w-md">
@@ -43,7 +43,7 @@ export default function LiveChat() {
             </div>
 
             <div className="flex gap-4">
-              <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center shrink-0">
                 <Headphones className="w-5 h-5 text-white" />
               </div>
               <div className="max-w-md">
