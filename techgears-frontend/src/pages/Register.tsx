@@ -57,16 +57,16 @@ export default function Register() {
               className="w-full h-full rounded-3xl object-cover shadow-2xl"
             />
             <div className="absolute bottom-12 left-12 z-20 text-white drop-shadow-lg">
-              <h2 className="text-4xl font-bold mb-4">Mulai Perjalanan Anda</h2>
-              <p className="text-xl opacity-90 max-w-md">Dapatkan akses eksklusif ke berbagai perangkat teknologi terbaik dan penawaran menarik lainnya.</p>
+              <h2 className="text-4xl font-bold mb-4">Start Your Journey</h2>
+              <p className="text-xl opacity-90 max-w-md">Get exclusive access to the best tech devices and exciting offers.</p>
             </div>
           </div>
 
           {/* Sisi Kanan: Form Register */}
           <div className="w-full max-w-md mx-auto">
             <div className="mb-10 text-center lg:text-left">
-              <h1 className="text-4xl font-bold text-gray-900 mb-3">Buat Akun Baru</h1>
-              <p className="text-gray-500">Lengkapi data di bawah untuk bergabung dengan TechGears</p>
+              <h1 className="text-4xl font-bold text-gray-900 mb-3">Create a New Account</h1>
+              <p className="text-gray-500">Fill in the details below to join TechGears</p>
             </div>
 
             {error && (
@@ -79,12 +79,12 @@ export default function Register() {
               {/* Input Nama */}
               <div className="space-y-1">
                 <label className="text-sm font-semibold text-gray-700 ml-1 flex items-center gap-2">
-                  <User size={14} /> Nama Lengkap
+                  <User size={14} /> Full Name
                 </label>
                 <input
                   type="text"
                   name="name"
-                  placeholder="Masukkan nama lengkap"
+                  placeholder="Enter your full name"
                   value={formData.name}
                   onChange={handleChange}
                   required
@@ -117,7 +117,7 @@ export default function Register() {
                   <input
                     type={showPassword ? "text" : "password"}
                     name="password"
-                    placeholder="Minimal 8 karakter"
+                    placeholder="Minimum 8 characters"
                     value={formData.password}
                     onChange={handleChange}
                     required
@@ -133,16 +133,16 @@ export default function Register() {
                 </div>
               </div>
 
-              {/* Input Konfirmasi Password */}
+              {/* Input Confirm Password */}
               <div className="space-y-1">
                 <label className="text-sm font-semibold text-gray-700 ml-1 flex items-center gap-2">
-                  <Lock size={14} /> Konfirmasi Password
+                  <Lock size={14} /> Confirm Password
                 </label>
                 <div className="relative">
                   <input
                     type={showPasswordConfirmation ? "text" : "password"}
                     name="password_confirmation"
-                    placeholder="Ulangi password Anda"
+                    placeholder="Repeat your password"
                     value={formData.password_confirmation}
                     onChange={handleChange}
                     required
@@ -169,11 +169,11 @@ export default function Register() {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    Mendaftarkan...
+                    Registering...
                   </span>
                 ) : (
                   <>
-                    Daftar Akun
+                    Register Account
                     <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                   </>
                 )}
@@ -181,9 +181,9 @@ export default function Register() {
 
               <div className="pt-8 border-t border-gray-100 text-center">
                 <p className="text-gray-600 text-sm">
-                  Sudah memiliki akun?{' '}
+                  Already have an account?{' '}
                   <Link to="/login" className="font-bold text-blue-600 hover:underline">
-                    Masuk Sekarang
+                    Log In Now
                   </Link>
                 </p>
               </div>
