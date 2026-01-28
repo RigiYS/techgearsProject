@@ -7,7 +7,6 @@ import {
   Package, 
   RotateCcw, 
   XCircle, 
-  Heart, 
   LogOut, 
   Settings,
   ShieldCheck,
