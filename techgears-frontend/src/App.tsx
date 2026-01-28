@@ -34,7 +34,6 @@ function App() {
           <Route index element={<Home />} />
           <Route path="products" element={<Products />} />
           <Route path="products/:slug" element={<ProductDetail />} />
-          <Route path="cart" element={<Cart />} />
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
           <Route path="comparison" element={<ProductComparison />} />
@@ -54,6 +53,7 @@ function App() {
             <Route path="account" element={<Account />} />
             <Route path="checkout" element={<Checkout />} />
             <Route path="wishlist" element={<Wishlist />} />
+            <Route path="cart" element={<Cart />} />
             
             {/* Rute Khusus Seller */}
             <Route path="seller/products" element={<SellerProductManagement />} />
