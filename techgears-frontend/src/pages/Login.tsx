@@ -28,7 +28,7 @@ export default function Login() {
       localStorage.setItem('token', token)
       navigate('/')
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Login failed. Please check your credentials.')
+      setError(err.response?.data?.message || 'Invalid username or password.')
     } finally {
       setLoading(false)
     }
@@ -97,7 +97,7 @@ export default function Login() {
                 </button>
 
                 <div className="flex items-center justify-between text-sm">
-                  <Link to="/register" className="text-gray-600 hover:text-blue-500 transition">
+                  <Link to="/register" className="text-gray-600">
                     Don't have an account? <span className="font-medium text-blue-500">Create Account</span>
                   </Link>
                   <Link to="/forgot-password" className="text-blue-500 hover:underline">
